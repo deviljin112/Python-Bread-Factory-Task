@@ -1,6 +1,42 @@
 # Python-Bread-Factory-Task
 
-## First Test Result
+## Requirements
+
+You will need the following modules to use this project:
+
+- `import pytest`
+- `import unittest`
+
+If you do not have `pytest` installed use `pip install pytest` in your terminal.
+
+## Test Syntax
+
+- `pytest` for basic testing utility
+- `pytest -v` for more in-depth testing reporting
+
+## First iteration
+
+First we going to create the test code that we will run and expect it to fail all tests. This code will be used as a guidelines for what is required of our program, keep us focused on what needs to work, and how. As well as what the returned values should be of each function.
+
+```python
+# Creates the Test Class which extends the unittest module
+class TestFactory(unittest.TestCase):
+    # Creates an instance of the BreadFactory class
+    tested_class = BreadFactory()
+
+    # Creates test cases for each function
+    def test_dough(self):
+        # Checks if with specified input, the function returns the expected result
+        self.assertTrue(self.tested_class.make_dough(True, True))
+
+    def test_naan(self):
+        self.assertEqual(self.tested_class.bake_naan(True), "naan")
+
+    def test_run(self):
+        self.assertEqual(self.tested_class.run_factory(["water", "flour"]), "naan")
+```
+
+### First Test Result
 
 ```bash
 ================================================= test session starts =================================================
@@ -16,7 +52,48 @@ test_factory.py::TestFactory::test_run FAILED                                   
 ====================================================== FAILURES =======================================================
 ```
 
-## Second Test Result
+## Second Iteration
+
+On our second iteration we create the code for passing the test and run the test again. We need to create our functions that we will be testing with arguments that will be passed from the test. Each function needs to return the Expected result that we have set in our tests.
+
+```python
+class BreadFactory:
+    # Function for checking if user can make dough
+    def make_dough(self, has_water, has_flour):
+        if has_water and has_flour:
+            # Returns True if user has BOTH water and flour
+            return True
+        else:
+            return False
+
+    # Function for checking if user can bake a naan bread
+    def bake_naan(self, has_dough):
+        if has_dough:
+            # Returns string "naan" if user already made dough
+            return "naan"
+        return "failed"
+
+    # Main function for running the whole factory
+    # Input is a list of all ingredients available
+    def run_factory(self, ingredients):
+        # Sets local variables for future use
+        has_water = False
+        has_flour = False
+
+        # If water and flour is in the ingredients list then set variables to true
+        if "water" in ingredients and "flour" in ingredients:
+            has_water = True
+            has_flour = True
+
+        # Check if user can make dough
+        dough = self.make_dough(has_water, has_flour)
+        # Check if user can make a naan bread
+        naan = self.bake_naan(dough)
+        # Return the result of previous function (either "naan" or "failed")
+        return naan
+```
+
+### Second Test Result
 
 ```bash
 ================================================= test session starts =================================================
@@ -31,3 +108,7 @@ test_factory.py::TestFactory::test_run PASSED                                   
 
 ================================================== 3 passed in 0.05s ==================================================
 ```
+
+#### Step by Step Code Break-down
+
+`run_factory()` function is the main function that will be ran by the user. This function takes a list which contains all the ingredients that the user has. That list is assigned to the `ingredients` variable. Next, we set our local variables (`has_water` and `has_flour`) that will be used in other functions to default value of `False`. We then check with the `in` function whether "water" and "flour" is actuall in the ingredients list. If they are, we set our local variables `has_water` and `has_flour` to `True`. We then check if the user can make dough with the `make_dough()` function with takes our two previously mentioned boolean variables as arguments. The function returns either a `True` or a `False` boolean depending on what the two booleans `has_water` and `has_water` were set to. Both booleans need to be `True` for `make_dough()` to return `True`. Next we take our return value from `make_dough()` and assign it to the `dough` variable which we pass to our next function, `bake_naan()`. This function checks if the user has made dough, and if `True` returns the string `naan`. If the user does not have dough; returns "failed". The return value of this function is assigned to `naan` and returned from `run_factory()`.
