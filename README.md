@@ -111,4 +111,15 @@ test_factory.py::TestFactory::test_run PASSED                                   
 
 #### Step by Step Code Break-down
 
-`run_factory()` function is the main function that will be ran by the user. This function takes a list which contains all the ingredients that the user has. That list is assigned to the `ingredients` variable. Next, we set our local variables (`has_water` and `has_flour`) that will be used in other functions to default value of `False`. We then check with the `in` function whether "water" and "flour" is actuall in the ingredients list. If they are, we set our local variables `has_water` and `has_flour` to `True`. We then check if the user can make dough with the `make_dough()` function with takes our two previously mentioned boolean variables as arguments. The function returns either a `True` or a `False` boolean depending on what the two booleans `has_water` and `has_water` were set to. Both booleans need to be `True` for `make_dough()` to return `True`. Next we take our return value from `make_dough()` and assign it to the `dough` variable which we pass to our next function, `bake_naan()`. This function checks if the user has made dough, and if `True` returns the string `naan`. If the user does not have dough; returns "failed". The return value of this function is assigned to `naan` and returned from `run_factory()`.
+1. `run_factory()` function is the main function that will be ran by the user. This function takes a list which contains all the ingredients that the user has.
+2. That list is assigned to the `ingredients` variable.
+3. Next, we set our local variables (`has_water` and `has_flour`) that will be used in other functions to default value of `False`.
+4. We then check with the `in` function whether "water" and "flour" is actuall in the ingredients list.
+5. If they are, we set our local variables `has_water` and `has_flour` to `True`.
+6. We then check if the user can make dough with the `make_dough()` function with takes our two previously mentioned boolean variables as arguments.
+7. The function returns either a `True` or a `False` boolean depending on what the two booleans `has_water` and `has_water` were set to.
+8. Both booleans need to be `True` for `make_dough()` to return `True`.
+9. Next we take our return value from `make_dough()` and assign it to the `dough` variable which we pass to our next function, `bake_naan()`.
+10. This function checks if the user has made dough, and if `True` returns the string `naan`.
+11. If the user does not have dough; returns "failed".
+12. The return value of this function is assigned to `naan` and returned from `run_factory()`.
