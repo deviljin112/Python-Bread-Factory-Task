@@ -40,14 +40,18 @@ def main():
         print("What are you ingredients?\nPlease input each item seperated by a space")
         ingredients = input("=> ").split(" ")
 
+        # Creates an instance of the BreadFactory class
         factory = BreadFactory()
+        # Calls the run_factory function
         result = factory.run_factory(ingredients)
 
+        # Prints depending on the result
         if result == "naan":
             print("Well done you can make a naan bread!!")
         else:
             print("Sorry you dont have the required ingredients!\n")
 
+        # Asks if user would like to make another
         if input("Would you like to make another bread?\n=> ").lower() == "no":
             break
 
