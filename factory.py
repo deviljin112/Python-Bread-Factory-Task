@@ -33,3 +33,24 @@ class BreadFactory:
         naan = self.bake_naan(dough)
         # Return the result of previous function (either "naan" or "failed")
         return naan
+
+
+def main():
+    while True:
+        print("What are you ingredients?\nPlease input each item seperated by a space")
+        ingredients = input("=> ").split(" ")
+
+        factory = BreadFactory()
+        result = factory.run_factory(ingredients)
+
+        if result == "naan":
+            print("Well done you can make a naan bread!!")
+        else:
+            print("Sorry you dont have the required ingredients!\n")
+
+        if input("Would you like to make another bread?\n=> ").lower() == "no":
+            break
+
+
+if __name__ == "__main__":
+    main()
