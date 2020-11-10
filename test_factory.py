@@ -1,12 +1,19 @@
+# Imports the test modules
 import pytest
 import unittest
+
+# Imports the class for testing
 from factory import BreadFactory
 
 
+# Creates the Test Class which extends the unittest module
 class TestFactory(unittest.TestCase):
+    # Creates an instance of the BreadFactory class
     tested_class = BreadFactory()
 
+    # Creates test cases for each function
     def test_dough(self):
+        # Checks if with specified input, the function returns the expected result
         self.assertTrue(self.tested_class.make_dough(True, True))
 
     def test_naan(self):
